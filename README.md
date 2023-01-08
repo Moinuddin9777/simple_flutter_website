@@ -1,8 +1,7 @@
-# simple_flutter_website
+#### a simple flutter website
 
-A new Flutter project.
-
-## Getting Started
+A single page app made for web with flutter
+## NOTE: Still under dev
 
 This project is a starting point for a Flutter application.
 
