@@ -52,7 +52,7 @@ class CustomAppBar extends StatelessWidget {
                 press: () {},
               ),
               MyMenuItem(
-                title: "Login",
+                title: "Work",
                 press: () {},
               ),
               IconButton(
