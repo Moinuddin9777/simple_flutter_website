@@ -1,7 +1,8 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
-import 'package:simple_flutter_website/widgets.dart';
+import 'package:simple_flutter_website/widgets/custom_app_bar.dart';
+import 'package:simple_flutter_website/widgets/body_widget.dart';
 
 void main() {
   runApp(const MyApp());
