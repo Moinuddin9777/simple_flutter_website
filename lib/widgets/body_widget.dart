@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_flutter_website/themes.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -41,20 +42,13 @@ class Body extends StatelessWidget {
                     ),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFF372930),
+                        color: Color.fromARGB(255, 221, 221, 221),
                         shape: BoxShape.circle,
                       ),
                     ),
                   ),
                   SizedBox(width: 15),
-                  Text(
-                    "Get Started".toUpperCase(),
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 19,
-                    ),
-                  ),
+                  Text("Get Started".toUpperCase(), style: subtitleBold),
                   SizedBox(width: 15),
                 ],
               ),
