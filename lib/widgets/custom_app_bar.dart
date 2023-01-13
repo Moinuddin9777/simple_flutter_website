@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_flutter_website/UI/views/about_page.dart';
+import 'package:simple_flutter_website/UI/views/contact_page.dart';
+import 'package:simple_flutter_website/main.dart';
+import 'package:simple_flutter_website/themes.dart';
 import '../widgets/menu_item.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -22,45 +26,60 @@ class CustomAppBar extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Row(
-            children: [
-              Image.network(
-                "https://t4.ftcdn.net/jpg/03/75/38/73/360_F_375387396_wSJM4Zm0kIRoG7Ej8rmkXot9gN69H4u4.jpg",
-                height: 25,
-                alignment: Alignment.topCenter,
-              ),
-              SizedBox(width: 5),
-              Text(
-                "Simple Site".toUpperCase(),
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ),
-              Spacer(),
-              MyMenuItem(
-                title: "Home",
-                press: () {},
-              ),
-              MyMenuItem(
-                title: "about",
-                press: () {},
-              ),
-              MyMenuItem(
-                title: "Pricing",
-                press: () {},
-              ),
-              MyMenuItem(
-                title: "Contact",
-                press: () {},
-              ),
-              MyMenuItem(
-                title: "Work",
-                press: () {},
-              ),
-              IconButton(
-                icon: Icon(CupertinoIcons.search),
-                // child: Text("Get Started"),
-                onPressed: () {},
-              ),
-            ],
+          child: Expanded(
+            child: Row(
+              children: [
+                Image.network(
+                  "https://t4.ftcdn.net/jpg/03/75/38/73/360_F_375387396_wSJM4Zm0kIRoG7Ej8rmkXot9gN69H4u4.jpg",
+                  height: 25,
+                  alignment: Alignment.topCenter,
+                ),
+                SizedBox(width: 5),
+                Text(
+                  "Simple Site".toUpperCase(),
+                  style: headlineTextStyle,
+                ),
+                Spacer(),
+                MyMenuItem(
+                  title: "Home",
+                  press: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyHomePage()));
+                  },
+                ),
+                MyMenuItem(
+                  title: "about",
+                  press: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AboutPage()));
+                  },
+                ),
+                MyMenuItem(
+                  title: "Projects",
+                  press: () {},
+                ),
+                MyMenuItem(
+                  title: "Contact",
+                  press: () {
+                    Navigator.pop(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ContactPage()));
+                  },
+                ),
+                MyMenuItem(
+                  title: "Work",
+                  press: () {},
+                ),
+                IconButton(
+                  icon: Icon(CupertinoIcons.search),
+                  // child: Text("Get Started"),
+                  onPressed: () {},
+                ),
+              ],
+            ),
           ),
         ),
       ),
