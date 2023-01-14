@@ -10,13 +10,13 @@ class Body extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            "Hey!, Welcome to this site",
+            "RESTful  API integration in Flutter Web",
             style: Theme.of(context).textTheme.headline2!.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
           ),
           const Text(
-            "This is a simple single page UI of a web page made with flutter",
+            "This is a simple single page web application made with Flutter where data is fetched from an open source API.",
             style: TextStyle(
               fontSize: 21,
               // color: kTextcolor.withOpacity(0.34),
@@ -48,7 +48,9 @@ class Body extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 15),
-                  Text("Get Started".toUpperCase(), style: subtitleBold),
+                  Text("Get Started ".toUpperCase(), style: subtitleBold.copyWith(
+                    color: Colors.white ,
+                  ) ),
                   SizedBox(width: 15),
                 ],
               ),
