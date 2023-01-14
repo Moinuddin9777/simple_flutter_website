@@ -14,7 +14,10 @@ class _AboutPageState extends State<AboutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-        CustomAppBar(),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+          child: CustomAppBar(),
+        ),
         Center(
           child: Text(
             "ABOUT PAGE UNDER DEV",
