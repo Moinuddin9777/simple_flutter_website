@@ -38,6 +38,9 @@ dependencies:
   get: ^4.6.5 #WONT BE USED
   bloc: ^8.1.0
   flutter_bloc: ^8.1.1
+  dio:
+  logger:
+  equatable:
 
 dev_dependencies:
   flutter_test:
