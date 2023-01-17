@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_flutter_website/UI/views/about_page.dart';
 import 'package:simple_flutter_website/UI/views/contact_page.dart';
+import 'package:simple_flutter_website/UI/views/data_page.dart';
 import 'package:simple_flutter_website/main.dart';
 import 'package:simple_flutter_website/themes.dart';
 import '../widgets/menu_item.dart';
@@ -57,8 +58,14 @@ class CustomAppBar extends StatelessWidget {
                   },
                 ),
                 MyMenuItem(
-                  title: "Projects",
-                  press: () {},
+                  title: "Data",
+                  press: () {
+                    Navigator.push(context,
+                    MaterialPageRoute(builder:
+                    (context)=> DataPage()
+                    ),
+                    );
+                  },
                 ),
                 MyMenuItem(
                   title: "Contact",
