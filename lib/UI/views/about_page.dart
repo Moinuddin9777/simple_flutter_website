@@ -20,7 +20,7 @@ class _AboutPageState extends State<AboutPage> {
         ),
         Center(
           child: Text(
-            "ABOUT PAGE UNDER DEV",
+            "ABOUT PAGE UNDER DEV NEEDS TIME TO BUILD",
             style: headlineTextStyle,
           ),
         )
