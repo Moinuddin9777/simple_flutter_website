@@ -54,52 +54,77 @@ class ProductsResponse {
   String? apiFeaturedImage;
   List<ProductColor?>? productColors;
 
-  factory ProductsResponse.fromJson(Map<String, dynamic> json) => ProductsResponse(
-    id: json["id"],
-    brand: json["brand"],
-    name: json["name"],
-    price: json["price"],
-    priceSign: json["price_sign"],
-    currency: json["currency"],
-    imageLink: json["image_link"],
-    productLink: json["product_link"],
-    websiteLink: json["website_link"],
-    description: json["description"],
-    rating: json["rating"],
-    category: json["category"],
-    productType: productTypeValues.map[json["product_type"]],
-    tagList: json["tag_list"] == null ? [] : List<String?>.from(json["tag_list"]!.map((x) => x)),
-    createdAt: DateTime.parse(json["created_at"]),
-    updatedAt: DateTime.parse(json["updated_at"]),
-    productApiUrl: json["product_api_url"],
-    apiFeaturedImage: json["api_featured_image"],
-    productColors: json["product_colors"] == null ? [] : List<ProductColor?>.from(json["product_colors"]!.map((x) => ProductColor.fromJson(x))),
-  );
+  factory ProductsResponse.fromJson(Map<String, dynamic> json) =>
+      ProductsResponse(
+        id: json["id"],
+        brand: json["brand"],
+        name: json["name"],
+        price: json["price"],
+        priceSign: json["price_sign"],
+        currency: json["currency"],
+        imageLink: json["image_link"],
+        productLink: json["product_link"],
+        websiteLink: json["website_link"],
+        description: json["description"],
+        rating: json["rating"],
+        category: json["category"],
+        productType: productTypeValues.map[json["product_type"]],
+        tagList: json["tag_list"] == null
+            ? []
+            : List<String?>.from(json["tag_list"]!.map((x) => x)),
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+        productApiUrl: json["product_api_url"],
+        apiFeaturedImage: json["api_featured_image"],
+        productColors: json["product_colors"] == null
+            ? []
+            : List<ProductColor?>.from(
+                json["product_colors"]!.map((x) => ProductColor.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "brand": brand,
-    "name": name,
-    "price": price,
-    "price_sign": priceSign,
-    "currency": currency,
-    "image_link": imageLink,
-    "product_link": productLink,
-    "website_link": websiteLink,
-    "description": description,
-    "rating": rating,
-    "category": category,
-    "product_type": productTypeValues.reverse![productType],
-    "tag_list": tagList == null ? [] : List<dynamic>.from(tagList!.map((x) => x)),
-    "created_at": createdAt?.toIso8601String(),
-    "updated_at": updatedAt?.toIso8601String(),
-    "product_api_url": productApiUrl,
-    "api_featured_image": apiFeaturedImage,
-    "product_colors": productColors == null ? [] : List<dynamic>.from(productColors!.map((x) => x!.toJson())),
-  };
+        "id": id,
+        "brand": brand,
+        "name": name,
+        "price": price,
+        "price_sign": priceSign,
+        "currency": currency,
+        "image_link": imageLink,
+        "product_link": productLink,
+        "website_link": websiteLink,
+        "description": description,
+        "rating": rating,
+        "category": category,
+        "product_type": productTypeValues.reverse![productType],
+        "tag_list":
+            tagList == null ? [] : List<dynamic>.from(tagList!.map((x) => x)),
+        "created_at": createdAt?.toIso8601String(),
+        "updated_at": updatedAt?.toIso8601String(),
+        "product_api_url": productApiUrl,
+        "api_featured_image": apiFeaturedImage,
+        "product_colors": productColors == null
+            ? []
+            : List<dynamic>.from(productColors!.map((x) => x!.toJson())),
+      };
 }
 
-enum Category { PENCIL, LIPSTICK, LIQUID, EMPTY, POWDER, LIP_GLOSS, GEL, CREAM, PALETTE, CONCEALER, HIGHLIGHTER, BB_CC, CONTOUR, LIP_STAIN, MINERAL }
+enum Category {
+  PENCIL,
+  LIPSTICK,
+  LIQUID,
+  EMPTY,
+  POWDER,
+  LIP_GLOSS,
+  GEL,
+  CREAM,
+  PALETTE,
+  CONCEALER,
+  HIGHLIGHTER,
+  BB_CC,
+  CONTOUR,
+  LIP_STAIN,
+  MINERAL
+}
 
 final categoryValues = EnumValues({
   "bb_cc": Category.BB_CC,
@@ -121,18 +146,13 @@ final categoryValues = EnumValues({
 
 enum Currency { CAD, USD, GBP }
 
-final currencyValues = EnumValues({
-  "CAD": Currency.CAD,
-  "GBP": Currency.GBP,
-  "USD": Currency.USD
-});
+final currencyValues =
+    EnumValues({"CAD": Currency.CAD, "GBP": Currency.GBP, "USD": Currency.USD});
 
 enum PriceSign { EMPTY, PRICE_SIGN }
 
-final priceSignValues = EnumValues({
-  "\u0024": PriceSign.EMPTY,
-  "£": PriceSign.PRICE_SIGN
-});
+final priceSignValues =
+    EnumValues({"\u0024": PriceSign.EMPTY, "£": PriceSign.PRICE_SIGN});
 
 class ProductColor {
   ProductColor({
@@ -144,17 +164,28 @@ class ProductColor {
   String? colourName;
 
   factory ProductColor.fromJson(Map<String, dynamic> json) => ProductColor(
-    hexValue: json["hex_value"],
-    colourName: json["colour_name"],
-  );
+        hexValue: json["hex_value"],
+        colourName: json["colour_name"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "hex_value": hexValue,
-    "colour_name": colourName,
-  };
+        "hex_value": hexValue,
+        "colour_name": colourName,
+      };
 }
 
-enum ProductType { LIP_LINER, LIPSTICK, FOUNDATION, EYELINER, EYESHADOW, BLUSH, BRONZER, MASCARA, EYEBROW, NAIL_POLISH }
+enum ProductType {
+  LIP_LINER,
+  LIPSTICK,
+  FOUNDATION,
+  EYELINER,
+  EYESHADOW,
+  BLUSH,
+  BRONZER,
+  MASCARA,
+  EYEBROW,
+  NAIL_POLISH
+}
 
 final productTypeValues = EnumValues({
   "blush": ProductType.BLUSH,
