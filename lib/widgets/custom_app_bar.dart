@@ -27,7 +27,8 @@ class CustomAppBar extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Expanded(
+          child: Flexible(
+            fit: FlexFit.tight,
             child: Row(
               children: [
                 Image.network(
@@ -40,7 +41,7 @@ class CustomAppBar extends StatelessWidget {
                   "Simple Site".toUpperCase(),
                   style: headlineTextStyle,
                 ),
-                Spacer(),
+                const Spacer(),
                 MyMenuItem(
                   title: "Home",
                   press: () {
@@ -60,10 +61,9 @@ class CustomAppBar extends StatelessWidget {
                 MyMenuItem(
                   title: "Data",
                   press: () {
-                    Navigator.push(context,
-                    MaterialPageRoute(builder:
-                    (context)=> DataPage()
-                    ),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DataPage()),
                     );
                   },
                 ),
