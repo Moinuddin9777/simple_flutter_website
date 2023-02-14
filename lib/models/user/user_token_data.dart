@@ -4,8 +4,6 @@
 
 import 'dart:convert';
 
-//import 'package:fraghill/models/entities/user/user_data.dart';
-
 UserTokenData userTokenDataFromJson(String str) =>
     UserTokenData.fromJson(json.decode(str));
 
