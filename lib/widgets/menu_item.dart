@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_flutter_website/themes.dart';
+import 'package:simple_flutter_website/utils/theme.dart';
 
 class MyMenuItem extends StatelessWidget {
   final String title;
@@ -12,13 +13,14 @@ class MyMenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => press(),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+    return Expanded(
+      child: TextButton(
+        onPressed: () => press(),
         child: Text(
           title.toUpperCase(),
-          style: subtitleBold,
+          style: subtitleBold.copyWith(
+            color: Colors.deepPurple,
+          ),
         ),
       ),
     );
