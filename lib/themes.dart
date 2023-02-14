@@ -10,7 +10,7 @@ TextStyle headlineSecondaryTextStyle = GoogleFonts.montserrat(
     textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.w300));
 
 TextStyle subtitleBold = GoogleFonts.montserrat(
-    textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500));
+    textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700));
 
 TextStyle subtitleTextStyle = GoogleFonts.openSans(
     textStyle: const TextStyle(fontSize: 14, letterSpacing: 1));
