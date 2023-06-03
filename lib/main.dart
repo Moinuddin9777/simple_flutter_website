@@ -1,8 +1,5 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:simple_flutter_website/bloc/auth/auth_event.dart';
 import 'package:simple_flutter_website/bloc/theme/theme_bloc.dart';
 import 'package:simple_flutter_website/bloc/theme/theme_state.dart';
 import 'package:simple_flutter_website/products/products_bloc.dart';
@@ -43,7 +40,7 @@ class _MyAppState extends State<MyApp> {
       child: BlocBuilder<ThemeDataBloc, ThemeDataState>(
         builder: (context, state) {
           return MaterialApp(
-            home:  MyHomePage(),
+            home: MyHomePage(),
             theme: state.theme,
           );
         },
