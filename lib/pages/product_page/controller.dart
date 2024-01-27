@@ -5,12 +5,14 @@ import 'package:get/get.dart';
 import 'package:assignment/APIs/products.dart';
 
 class ProductController extends GetxController {
-  RxString brand = ''.obs;
+  String brand = '';
+  List<Product> products = [];
+  bool isLoading = true;
+
   ProductController(String value) {
-    brand = RxString(value);
+    brand = value;
   }
-  final products = [].obs;
-  var isLoading = true.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -24,15 +26,15 @@ class ProductController extends GetxController {
     debugPrint('get started');
     final response = await http.get(uri);
     final body = response.body;
-    json.decode(body).forEach(
-      (e) async {
-        if (await checkImageUrlStatus(e['image_link']) == true) {
-          products.add(Product.fromJson(e));
-        }
-      },
-    );
+    final decodedData = json.decode(body);
+    for (var item in decodedData) {
+      if (await checkImageUrlStatus(item['image_link'])) {
+        products.add(Product.fromJson(item));
+      }
+    }
     debugPrint('get completed');
-    isLoading.value = false;
+    isLoading = false;
+    update();
   }
 
   Future<bool> checkImageUrlStatus(String url) async {

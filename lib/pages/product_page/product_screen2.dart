@@ -1,19 +1,19 @@
+// ignore_for_file: deprecated_member_use, duplicate_ignore
 
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_ellipsis_text/flutter_ellipsis_text.dart';
 import 'package:assignment/APIs/products.dart';
+
 class ProductView extends StatelessWidget {
-  const ProductView({super.key, required this.product});
+  const ProductView({Key? key, required this.product}) : super(key: key);
+
   final Product product;
+
   @override
   Widget build(BuildContext context) {
-    var sign = '';
-    if (product.priceSign == null) {
-      sign = '\$';
-    } else {
-      sign = '${product.priceSign}';
-    }
+    String sign = product.priceSign ?? '\$';
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -38,40 +38,24 @@ class ProductView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              // ignore: duplicate_ignore
               Text(
                 product.name,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.onSecondaryContainer,
+                // ignore: deprecated_member_use
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      color: Theme.of(context).colorScheme.onSecondary,
                       fontSize: 30,
                     ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              // Wrap(
-              //   children: product.productColors
-              //       .map(
-              //         (e) => Container(
-              //           width: 25.0,
-              //           height: 25.0,
-              //           decoration: BoxDecoration(
-              //             shape: BoxShape.circle,
-              //             color: Color(
-              //               int.parse(
-              //                 e.hexValue!.replaceFirst('#', '0xFF'),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       )
-              //       .toList(),
-              // ),
               if (product.category != null)
                 Text(
-                  'category : ${product.category!}',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  'Category: ${product.category!}',
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                        color: Theme.of(context).colorScheme.onPrimary,
                         fontSize: 22,
                       ),
                 ),
@@ -82,9 +66,9 @@ class ProductView extends StatelessWidget {
                 maxLines: 3,
                 ellipsis: '...',
                 text: product.description!,
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(
                       fontSize: 18,
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
                 textDirection: TextDirection.ltr,
               ),
@@ -99,18 +83,17 @@ class ProductView extends StatelessWidget {
                   GestureDetector(
                     onTap: () async {
                       try {
-                        if (await canLaunchUrl(
-                            Uri.parse(product.websiteLink))) {
-                          await launchUrl(Uri.parse(product.websiteLink));
+                        if (await canLaunch(product.websiteLink)) {
+                          await launch(product.websiteLink);
                         }
                       } catch (err) {
                         // ignore: avoid_print
-                        print('couldnt launch..');
+                        print('Could not launch: $err');
                       }
                     },
                     child: Text(
                       'Website Link',
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
                             decoration: TextDecoration.underline,
                             fontSize: 15,
                           ),
@@ -120,18 +103,17 @@ class ProductView extends StatelessWidget {
                   GestureDetector(
                     onTap: () async {
                       try {
-                        if (await canLaunchUrl(
-                            Uri.parse(product.productLink))) {
-                          await launchUrl(Uri.parse(product.productLink));
+                        if (await canLaunch(product.productLink)) {
+                          await launch(product.productLink);
                         }
                       } catch (err) {
                         // ignore: avoid_print
-                        print('couldnt launch..');
+                        print('Could not launch: $err');
                       }
                     },
                     child: Text(
                       'Product Link',
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
                             decoration: TextDecoration.underline,
                             fontSize: 15,
                           ),
@@ -146,9 +128,9 @@ class ProductView extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'Price :  ${product.price} $sign',
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Theme.of(context).colorScheme.onSecondaryContainer,
+                'Price: ${product.price} $sign',
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      color: Theme.of(context).colorScheme.onSecondary,
                       fontSize: 25,
                     ),
               ),
