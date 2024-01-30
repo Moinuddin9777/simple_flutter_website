@@ -34,13 +34,11 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons:  1.0.2
-  google_fonts:  3.0.1
   get: 4.6.5 
-  bloc: ^8.1.0
-  flutter_bloc: ^8.1.1
-  dio: 5.0.1
-  logger: 
-  equatable:
+  http: ^1.2.0
+  url_launcher: ^6.2.4
+  dropdown_button2: ^2.3.9
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +56,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - assets/homepagebg.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
