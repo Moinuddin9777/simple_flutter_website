@@ -26,6 +26,9 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/homepagebg.png'),
+            const SizedBox(
+              height: 17,
+            ),
             Container(
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(
@@ -77,6 +80,9 @@ class HomePage extends StatelessWidget {
                 ).toList(),
               ),
             ),
+            const SizedBox(
+              height: 10,
+            ),
             ElevatedButton(
               style: const ButtonStyle(
                 backgroundColor: MaterialStatePropertyAll(
@@ -95,6 +101,9 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),

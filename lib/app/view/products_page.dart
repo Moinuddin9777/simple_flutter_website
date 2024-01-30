@@ -6,14 +6,14 @@ import 'package:simple_flutter_website/app/view/product_card.dart';
 
 class ProductsPage extends StatelessWidget {
   ProductsPage({super.key});
-  final ProductController controller = Get.put(ProductController());
+  // final ProductController controller = Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 196, 167, 156),
       appBar: AppBar(
         title: GetBuilder<ProductController>(
-          // init: ProductController(),
+          init: ProductController(),
           builder: (controller) => Text(
             'Products from ${controller.currBrand}',
             style: GoogleFonts.poppins(),
@@ -25,7 +25,7 @@ class ProductsPage extends StatelessWidget {
           child: controller.isLoading
               ? const Center(
                   child: CircularProgressIndicator(
-                    color: Color.fromARGB(255, 196, 167, 156),
+                    color: Colors.white,
                   ),
                 )
               : controller.productList.isEmpty

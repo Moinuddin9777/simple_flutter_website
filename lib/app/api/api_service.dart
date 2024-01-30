@@ -10,10 +10,8 @@ class ApiService {
         Uri.parse(
             'https://makeup-api.herokuapp.com/api/v1/products.json?brand=$brand'),
       );
-      // print('https://makeup-api.herokuapp.com/api/v1/products.json?brand=$brand');
       print(response.statusCode);
       if (response.statusCode == 200) {
-        // print(response.body);
         var jsonString = response.body;
         // print('requesting');
         var res = productFromJson(jsonString);

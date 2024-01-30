@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
 import 'package:simple_flutter_website/app/api/api_service.dart';
 import 'package:simple_flutter_website/app/models/product.dart';
+import 'package:http/http.dart' as http;
 
 class ProductController extends GetxController {
   var isLoading = true;
   List<Product> productList = [];
-  String currBrand = "marcelle";
+  String currBrand = "colourpop";
 
   @override
   void onInit() {
@@ -16,9 +17,18 @@ class ProductController extends GetxController {
   void fetchProducts() async {
     isLoading = true;
     update();
-
+    productList = [];
     var products = await ApiService.fetchProducts(currBrand);
-    productList = products;
+
+    if (products != null) {
+      products.forEach((element) async {
+        var res = await http.get(Uri.parse(element.imageLink));
+        if (res.statusCode == 200) {
+          productList.add(element);
+          update();
+        }
+      });
+    }
     isLoading = false;
 
     update();
