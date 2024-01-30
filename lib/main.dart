@@ -1,88 +1,53 @@
+import 'package:getxapi/HomeBindings/binding.dart';
+import 'package:getxapi/Myapp/home.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:simple_flutter_website/bloc/theme/theme_bloc.dart';
-import 'package:simple_flutter_website/bloc/theme/theme_state.dart';
-import 'package:simple_flutter_website/products/products_bloc.dart';
-import 'package:simple_flutter_website/products/products_event.dart';
-import 'package:simple_flutter_website/widgets/custom_app_bar.dart';
-import 'package:simple_flutter_website/widgets/body_widget.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    var productsBloc = ProductsBloc();
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: ((context) {
-            return productsBloc
-              ..add(
-                LoadProductsEvent(),
-              );
-          }),
+    final ThemeData baseTheme = ThemeData.light();
+    return GetMaterialApp(
+      theme: ThemeData.from(
+        colorScheme: baseTheme.colorScheme.copyWith(
+          primary: Colors.indigo,
+          secondary: Colors.black,
         ),
-        BlocProvider(
-          create: (context) => ThemeDataBloc(),
-        )
-      ],
-      child: BlocBuilder<ThemeDataBloc, ThemeDataState>(
-        builder: (context, state) {
-          return MaterialApp(
-            home: MyHomePage(),
-            theme: state.theme,
-          );
-        },
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    // This size provide us total height and width  of our screen
-    return Scaffold(
-      body: Container(
-        height: size.height,
-        // it will take full width
-        width: size.width,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: [Color(0xff7b4397), Color(0xffdc2430)]),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Row(
-              children: [
-                Expanded(child: CustomAppBar()),
-              ],
-            ),
-            Spacer(),
-            // It will cover 1/3 of free spaces
-            Body(),
-            Spacer(
-              flex: 2,
-            ),
-            // it will cover 2/3 of free spaces
-          ],
+        textTheme: GoogleFonts.robotoCondensedTextTheme().copyWith(
+          headline6: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18.0,
+            color: Colors.black,
+          ),
+          headline5: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 24.0,
+            color: Colors.black,
+          ),
+          headline4: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 32.0,
+            color: Colors.black,
+          ),
+          bodyText1: const TextStyle(
+            fontSize: 16.0,
+            color: Color.fromARGB(255, 124, 37, 247),
+          ),
+          bodyText2: const TextStyle(
+            fontSize: 14.0,
+            color: Color.fromARGB(255, 124, 37, 247),
+          ),
         ),
       ),
+      initialBinding: HomeBinding(),
+      home: const HomeScreen(),
     );
   }
 }
