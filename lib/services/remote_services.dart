@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import 'package:shopx/models/product.dart';
+import 'package:makeup_api/models/product.dart';
 
 class RemoteServices {
   static var client = http.Client();
